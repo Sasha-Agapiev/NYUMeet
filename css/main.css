@@ -1,0 +1,37 @@
+html {
+    font-family: 'Poppins', Helvetica, sans-serif;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+}
+
+/* Titlebar CSS */
+
+header {
+    width: 100%;
+}
+
+.titleBar {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 7vh;
+}
+
+.titleBrand {
+    color: #5353ED;
+}
+
+/* Button CSS */
+
+.button {
+    background-color: #5353ED;
+    border: none;
+    color: white;
+    width: 20em;
+    height: 3em;
+    border-radius: 1.5em;
+    font-size: 1em;
+}

@@ -1,0 +1,24 @@
+/* Questions CSS */
+.signupSection {
+    margin: auto;
+    width: 40%;
+}
+
+textarea {
+    font-family: 'Poppins', Helvetica, sans-serif;
+    resize: none;
+}
+
+.buttonSubmit {
+    background-color: #5353ED;
+    border: none;
+    color: white;
+    width: 20em;
+    height: 3em;
+    border-radius: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
