@@ -1,0 +1,69 @@
+/* Find people css */
+.findSection {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+
+.peopleSection {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #5353ED;
+}
+
+/* Person CSS */
+
+.personContainer {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
+.personImage {
+    width: 5em;
+    height: 5em;
+    object-fit: cover;
+    border-radius: 2.5em;
+    margin: 2em;
+}
+
+.personInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.personName {
+    color: #5353ED;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.matchButton {
+    background-color: #5353ED;
+    border: none;
+    color: white;
+    width: 5em;
+    height: 2em;
+    border-radius: 1em;
+    font-size: 0.8em;
+}

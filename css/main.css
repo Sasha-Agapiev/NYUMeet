@@ -16,6 +16,7 @@ header {
 .titleBar {
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
     width: 100%;
 }
@@ -26,11 +27,13 @@ header {
     margin-left: 3em;
     margin-right: 3em;
     align-content: center;
+    align-items: center;
 }
 
 .middleTitleBar{
     display: flex;
     align-content: center;
+    align-items: center;
     flex: 1;
     margin-left: 3em;
     margin-right: 3em;
@@ -40,6 +43,7 @@ header {
 .rightTitleBar{
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: flex-end;
     flex: 1;
     margin-left: 3em;
@@ -47,6 +51,15 @@ header {
 }
 
 .menuItem {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.inactiveMenuItem {
+    color: rgba(0, 0, 0, 0.60);
+}
+
+.activeMenuItem {
     color: #5353ED;
 }
 
@@ -58,6 +71,7 @@ header {
 footer {
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
     width: 100%;
 }
@@ -65,6 +79,7 @@ footer {
 .footerLinks {
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: space-between;
     width: 30%;
     margin: 5em 1em 1em 1em;
