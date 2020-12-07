@@ -29,6 +29,8 @@
     flex-direction: row;
     align-content: center;
     align-items: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .imageContainer {
