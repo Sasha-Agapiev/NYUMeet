@@ -5,8 +5,8 @@
     align-content: center;
     align-items: center;
     justify-content: center;
-    margin-left: 20vw;
-    margin-right: 20vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .peopleSection {
@@ -31,12 +31,19 @@
     align-items: center;
 }
 
+.imageContainer {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
+
 .personImage {
     width: 5em;
     height: 5em;
     object-fit: cover;
     border-radius: 2.5em;
-    margin: 2em;
+    margin: 1em;
 }
 
 .personInfoContainer {
@@ -52,7 +59,7 @@
     align-items: center;
 }
 
-.personName {
+.itemTitle {
     color: #5353ED;
     margin-top: 0em;
     margin-bottom: 0em;
