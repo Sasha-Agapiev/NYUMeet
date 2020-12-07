@@ -1,15 +1,10 @@
-.landingImage {
-    width: 40vw;
-    height: 40vh;
-}
-
 /* Introduction Section CSS */
 
 .introSection {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 70vh;
 }
 
 .introTextSection {
@@ -23,6 +18,11 @@
     color: #5353ED;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+}
+
+.introImage {
+    width: 40vw;
+    height: 40vh;
 }
 
 /* Info Section CSS */

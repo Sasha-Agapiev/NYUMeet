@@ -17,11 +17,57 @@ header {
     display: flex;
     align-content: center;
     justify-content: center;
-    height: 7vh;
+    width: 100%;
+}
+
+.leftTitleBar{
+    display: flex;
+    flex: 1;
+    margin-left: 3em;
+    margin-right: 3em;
+    align-content: center;
+}
+
+.middleTitleBar{
+    display: flex;
+    align-content: center;
+    flex: 1;
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: center;
+}
+
+.rightTitleBar{
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    flex: 1;
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.menuItem {
+    color: #5353ED;
 }
 
 .titleBrand {
     color: #5353ED;
+}
+
+/* Footer CSS */
+footer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.footerLinks {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 30%;
+    margin: 5em 1em 1em 1em;
 }
 
 /* Button CSS */
