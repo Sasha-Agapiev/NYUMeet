@@ -1,7 +1,11 @@
 /* Questions CSS */
 .questionSection {
-    margin: auto;
-    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-left: 40vw;
+    margin-right: 40vw;
 }
 
 textarea {
@@ -9,6 +13,23 @@ textarea {
     resize: none;
 }
 
+.questionText {
+    color: #5353ED;
+}
+
+select {
+    padding: 0.7em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+textarea {
+    padding: 1em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.05);
+}
 .buttonSubmit {
     background-color: #5353ED;
     border: none;
