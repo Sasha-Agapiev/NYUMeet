@@ -13,6 +13,12 @@ header {
     width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Poppins', Helvetica, sans-serif;
+}
+
 .titleBar {
     display: flex;
     align-content: center;

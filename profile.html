@@ -14,8 +14,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">   
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" href="../css/people.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/listings.css">
 
         <!-- Favicon and Site Title -->
         <title>NYUMeet</title>
@@ -25,15 +25,16 @@
         <div>
             <div class="titleBar">
                 <div class="leftTitleBar">
-                    <h4 class="menuItem inactiveMenuItem">Find</h4>
-                    <h4 class="menuItem inactiveMenuItem">Matches</h4>
-                    <h4 class="menuItem activeMenuItem">Events</h4>
+                    <a href="find.html"><h4 class="menuItem inactiveMenuItem">Find</h4></a>
+                    <a href="matches.html"><h4 class="menuItem inactiveMenuItem">Matches</h4></a>
+                    <a href="events.html"><h4 class="menuItem inactiveMenuItem">Events</h4></a>
                 </div>
                 <div class="middleTitleBar">
-                    <h3 class="titleBrand">NYUMeet</h3>
+                    <a href="index.html"><h3 class="titleBrand">NYUMeet</h3></a>
                 </div>
                 <div class="rightTitleBar">
-                    <h4 class="menuItem activeMenuItem">Sign out</h4>
+                    <a href="profile.html"><h4 class="menuItem activeMenuItem">Profile</h4></a>
+                    <h4 class="menuItem inactiveMenuItem">Sign out</h4>
                 </div>
             </div>
         </div>
@@ -41,8 +42,11 @@
 
     <body>
         <div class="findSection">
-            <h1 class="title">Events</h1>
-            <button class="button">New event</button>
+            <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
+            <h1 class="title">Ethan Philpott</h1>
+            <p>My biography</p>
+            <button class="matchButton">Edit</button>
+            <h2 class="title">My Events</h2>
             <div class="peopleSection">
                 <div class="personContainer">
                     <div class="imageContainer">
@@ -53,7 +57,7 @@
                     <div class="personInfoContainer">
                         <div class="titleContainer">
                             <h2 class="itemTitle">Join us to hang out!</h2>
-                            <button class="matchButton">RSVP</button>
+                            <button class="matchButton">Going</button>
                         </div>
                         <p class="personBio">
                             <strong>People going:</strong> Eric, Will, Kate, and 3 more<br>

@@ -1,0 +1,67 @@
+/* Form CSS */
+.formSection {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40vw;
+    margin-right: 40vw;
+}
+
+.title {
+    text-align: center;
+    color: #5353ED;
+}
+
+.text {
+    color: #5353ED;
+}
+
+.buttonSubmit {
+    background-color: #5353ED;
+    border: none;
+    color: white;
+    width: 20em;
+    height: 3em;
+    border-radius: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: 'Poppins', Helvetica, sans-serif;
+}
+
+input {
+    padding: 0.7em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-bottom: 2em;
+    margin-top: 0.5em;
+    width: 20vw;
+    font-family: 'Poppins', Helvetica, sans-serif;
+}
+
+label {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.80);
+}
+
+textarea {
+    padding: 1em;
+    border-radius: 0.5em;
+    border: none;
+    resize: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', Helvetica, sans-serif;
+}
+
+select {
+    padding: 0.7em;
+    border-radius: 0.5em;
+    border: none;
+    font-family: 'Poppins', Helvetica, sans-serif;
+    background-color: rgba(0, 0, 0, 0.05);
+}
