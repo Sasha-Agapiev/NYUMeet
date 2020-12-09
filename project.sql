@@ -4,13 +4,14 @@ USE NyuMeet;
 
 CREATE TABLE Users (
     UserId int NOT NULL AUTO_INCREMENT,
-    UserName varchar(255) NOT NULL,
+    Username varchar(255) NOT NULL,
     Password varchar(255) NOT NULL,
     FirstName varchar(255) NOT NULL,
     LastName varchar(255) NOT NULL,
     Snapchat varchar(255),
     Zoom varchar(255),
     Instagram varchar(255),
+    UNIQUE(Username),
     PRIMARY KEY(UserId)
 );
 

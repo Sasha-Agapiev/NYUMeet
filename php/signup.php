@@ -41,9 +41,14 @@
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
 
+            <label for="firstName"><b>First Name</b></label>
+            <input type="text" placeholder="Confirm First Name" name="firstName" required>
+
+            <label for="lastName"><b>Last Name</b></label>
+            <input type="text" placeholder="Confirm Last Name" name="lastName" required>
+
             <label for="password"><b>Password</b></label>
             <input type="text" placeholder="Enter password" name="password" required>
-
 
             <label for="confirm"><b>Confirm Password</b></label>
             <input type="text" placeholder="Confirm password" name="confirm" required>
