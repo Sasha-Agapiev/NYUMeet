@@ -1,4 +1,3 @@
-/* Process for signup page */
 <?php
 require_once "config.php";
 $username = $password = $confirmpassword = "";
