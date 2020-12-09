@@ -36,7 +36,7 @@
     </header>
 
     <body>
-        <div method="post" action="pro.php" name="signinForm" class="formSection">
+        <form method="post" action="signin.php" name="signinForm" class="formSection">
             <h1 class="title">Sign-in</h1>
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
@@ -44,7 +44,12 @@
             <label for="password"><b>Password</b></label>
             <input type="password" placeholder="Enter password" name="password" required>
 
+            <?php
+                include('processing/config.php');
+                include('processing/signinProcessing.php');
+            ?>
+
             <button type="submit" name="signin" value="signin" class="buttonSubmit">Submit</button>
-        </div>
+        </form>
     </body>
 </html>

@@ -8,20 +8,8 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		/* Check if we got any issues with the filled out form */
-
-		if (empty($username)) { array_push($issues, "Username is needed"); }
-
-		if (empty($password)) { array_push($issues, "Password is needed"); }
-
-		if(count($issues) > 0) {
-			foreach ($issues as $issue) {
-				echo '<p class="issue">Error: ' . $issue . ' </p>';
-			}
-		}
-		
-		/* If everything is okay we can go ahead and sign in */
-		elseif ($query->rowCount() == 0 and count($issues) == 0) {
+		/* If username not registered and no errors then we can go ahead and register */
+		if ($query->rowCount() == 0 and count($issues) == 0) {
 			$hashed = password_hash($password, PASSWORD_BCRYPT);
 			
 			$query = $connection->prepare("SELECT * FROM users WHERE username=:username");

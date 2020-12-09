@@ -1,7 +1,3 @@
-<?php
-    include('processing/config.php');
-    include('processing/signupProcessing.php');
-?>
 <html>
     <head>
         <!-- Page Info -->
@@ -55,7 +51,12 @@
             <input type="password" placeholder="Enter password" name="password" required>
 
             <label for="confirm"><b>Confirm Password</b></label>
-            <input type="text" placeholder="Confirm password" name="confirm" required>
+            <input type="password" placeholder="Confirm password" name="confirm" required>
+
+            <?php
+                include('processing/config.php');
+                include('processing/signupProcessing.php');
+            ?>
 
             <button type="submit" name="register" value="register" class="buttonSubmit">Submit</button>
         </form>
