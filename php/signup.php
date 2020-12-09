@@ -1,3 +1,7 @@
+<?php
+    include('processing/config.php');
+    include('processing/signupProcessing.php');
+?>
 <html>
     <head>
         <!-- Page Info -->
@@ -36,7 +40,7 @@
     </header>
 
     <body>
-        <form method="post" action="processing/signupProcessing.php" name="signupForm" class="formSection">
+        <form method="post" action="signup.php" name="signupForm" class="formSection">
             <h1 class="title">Sign-up</h1>
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>

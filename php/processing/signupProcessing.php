@@ -11,17 +11,7 @@
 		$password = $_POST['password'];
 		$confirm = $_POST['confirm'];
 
-		/* Check if we got any issues with the filled out form */
-
-		if (empty($username)) { array_push($issues, "Username is needed"); }
-
-		if (empty($firstName)) { array_push($issues, "First Name is needed"); }
-
-		if (empty($lastName)) { array_push($issues, "Last Name is needed"); }
-
-		if (empty($password)) { array_push($issues, "Password is needed"); }
-
-		if (empty($confirm)) { array_push($issues, "Confirm Password is needed"); }
+		/* We have a required keyword in the html so we don't need to check for empty fields */
 
 		if ($password != $confirm) {
 		  array_push($issues, "Your passwords do not match");
@@ -34,15 +24,8 @@
 
 		/* If username already registered */
 		if ($query->rowCount() > 0) {
-            array_push($issues, "User already registered");
+            echo '<p class="error">Error: User already registered</p>';
 		}
-
-		if(count($issues) > 0) {
-			foreach ($issues as $issue) {
-				echo '<p class="issue">Error: ' . $issue . ' </p>';
-			}
-		}
-		
 		/* If username not registered and no errors then we can go ahead and register */
 		elseif ($query->rowCount() == 0 and count($issues) == 0) {
 			$hashed = password_hash($password, PASSWORD_BCRYPT);

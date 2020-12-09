@@ -2,7 +2,7 @@
     session_start();
 	include('config.php');
 	
-    if (isset($_POST['register'])) {
+    if (isset($_POST['signin'])) {
 
 		/* Get filled out form info */
 		$username = $_POST['username'];
@@ -20,7 +20,7 @@
 			}
 		}
 		
-		/* If username not registered and no errors then we can go ahead and register */
+		/* If everything is okay we can go ahead and sign in */
 		elseif ($query->rowCount() == 0 and count($issues) == 0) {
 			$hashed = password_hash($password, PASSWORD_BCRYPT);
 			
