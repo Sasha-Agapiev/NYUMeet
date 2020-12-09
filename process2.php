@@ -1,4 +1,4 @@
-/*Process2 is the process for the signin page*/
+/* Process2 is the process for the signin page */
 <?php
 require_once "config.php";
 $username = $password = "";
