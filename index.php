@@ -36,10 +36,9 @@
                 </div>
             </div>
         </header>
+	/* Not much php required for the landing page*/
 	<?php
 	require_once "config.php";
-	
-
 	?>
         <div class="introSection">
             <div class="introTextSection">
