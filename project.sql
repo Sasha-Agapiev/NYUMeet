@@ -1,7 +1,15 @@
+CREATE USER 'phpadmin'@'%' IDENTIFIED BY 's9H1*L@SNC*2NOkrDgIsMGHgl';
+
+GRANT ALL PRIVILEGES ON *.* TO 'phpadmin'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
 CREATE DATABASE NyuMeet;
 
 USE NyuMeet;
 
+-- Note that the password is 255 despite a max of 32 characters.
+-- This is because some encrption algorithms result in longer passwords
 CREATE TABLE Users (
     UserId int NOT NULL AUTO_INCREMENT,
     Username varchar(255) NOT NULL,
@@ -46,3 +54,6 @@ CREATE TABLE Matches (
     FOREIGN KEY(UserId2) REFERENCES Users(UserId),
     PRIMARY KEY(UserId1, UserId2)
 );
+
+-- Create new user
+INSERT INTO Users(Username, Password, FirstName, LastName) VALUES ("ephil012", "423sgsfsd", "Ethan", "Philpott");

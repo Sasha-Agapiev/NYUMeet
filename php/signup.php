@@ -36,7 +36,7 @@
     </header>
 
     <body>
-        <div class="formSection">
+        <form method="post" action="processing/signupProcessing.php" name="signupForm" class="formSection">
             <h1 class="title">Sign-up</h1>
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
@@ -47,13 +47,13 @@
             <label for="lastName"><b>Last Name</b></label>
             <input type="text" placeholder="Confirm Last Name" name="lastName" required>
 
-            <label for="password"><b>Password</b></label>
-            <input type="text" placeholder="Enter password" name="password" required>
+            <label for="password" maxlength="32"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" name="password" required>
 
             <label for="confirm"><b>Confirm Password</b></label>
             <input type="text" placeholder="Confirm password" name="confirm" required>
 
-            <button class="buttonSubmit">Submit</button>
-        </div>
+            <button type="submit" name="register" value="register" class="buttonSubmit">Submit</button>
+        </form>
     </body>
 </html>
