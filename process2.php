@@ -1,6 +1,6 @@
 /*Process2 is the process for the signin page*/
 <?php
-$mysqli = new mysqli('localhost', 'root', ' ', 'demo') or die(mysqli_error($mysqli));
+require_once "config.php";
 
 if(isset($_POST['submit'])){
 	$inputusername= $_POST['username'];
