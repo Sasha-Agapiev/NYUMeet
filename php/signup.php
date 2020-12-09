@@ -39,7 +39,7 @@
         <form method="post" action="signup.php" name="signupForm" class="formSection">
             <h1 class="title">Sign-up</h1>
             <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <input type="text" placeholder="Enter Username" name="username" required/>
 
             <label for="firstName"><b>First Name</b></label>
             <input type="text" placeholder="Confirm First Name" name="firstName" required>
