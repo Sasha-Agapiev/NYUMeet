@@ -57,3 +57,14 @@ CREATE TABLE Matches (
 
 -- Create new user
 INSERT INTO Users(Username, Password, FirstName, LastName) VALUES ("ephil012", "423sgsfsd", "Ethan", "Philpott");
+
+-- Create new questions
+INSERT INTO Questions(QuestionText) VALUES ("What is your NYU school?");
+INSERT INTO Questions(QuestionText) VALUES ("Are you an introvert or an extrovert?");
+INSERT INTO Questions(QuestionText) VALUES ("Are you more emotional or logical?");
+INSERT INTO Questions(QuestionText) VALUES ("What activity do you prefer?");
+INSERT INTO Questions(QuestionText) VALUES ("Which topic do you like to talk about?");
+INSERT INTO Questions(QuestionText) VALUES ("How organized are you?");
+INSERT INTO Questions(QuestionText) VALUES ("How punctual are you?");
+INSERT INTO Questions(QuestionText) VALUES ("What personality best describes you?");
+INSERT INTO Questions(QuestionText) VALUES ("Will you be on-campus in spring?");

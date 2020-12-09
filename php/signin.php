@@ -37,7 +37,7 @@
 
     <body>
         <form method="post" action="signin.php" name="signinForm" class="formSection">
-            <h1 class="title">Sign-up</h1>
+            <h1 class="title">Sign-in</h1>
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
 
