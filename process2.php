@@ -1,17 +1,19 @@
 /*Process2 is the process for the signin page*/
 <?php
 require_once "config.php";
+$username = $password = "";
+$username_err = $password_err = "";
 
 if(isset($_POST['submit'])){
 	$inputusername= $_POST['username'];
 	$inputpassword= $_POST['password'];
-	if(empty($username)){
+	if(empty($inputusername)){
 		$username_err = "Please enter a username.";
 	}
 	else{
 		$username = $inputusername;
 	}
-	if(empty($password)){
+	if(empty($inputpassword)){
 		$password_err = "Please enter a password.";
 	}
 	else{
