@@ -42,7 +42,7 @@
         include('processing/config.php');
         /*First find the matches*/
         $query = $connection->prepare("SELECT AnswerOptionId, COUNT(*) FROM UserAnswers GROUP BY AnswerOptionId ORDER BY COUNT(*) INC");
-		$query->execute();
+	$query->execute();
         /*Then insert into the matches table*/
     ?>
     <body>
