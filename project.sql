@@ -55,8 +55,9 @@ CREATE TABLE Matches (
     PRIMARY KEY(UserId1, UserId2)
 );
 
--- Create new user
+-- Create new users to start
 INSERT INTO Users(Username, Password, FirstName, LastName) VALUES ("ephil012", "423sgsfsd", "Ethan", "Philpott");
+INSERT INTO Users(Username, Password, FirstName, LastName) VALUES ("sasha68", "secretpassword", "Sasha", "Agapiev");
 
 -- Create new questions
 INSERT INTO Questions(QuestionText) VALUES ("What is your NYU school?");
@@ -68,3 +69,5 @@ INSERT INTO Questions(QuestionText) VALUES ("How organized are you?");
 INSERT INTO Questions(QuestionText) VALUES ("How punctual are you?");
 INSERT INTO Questions(QuestionText) VALUES ("What personality best describes you?");
 INSERT INTO Questions(QuestionText) VALUES ("Will you be on-campus in spring?");
+-- Create possible answers for each question and insert them to AnswerOptions table
+/* INSERT INTO AnswerOptions() */
