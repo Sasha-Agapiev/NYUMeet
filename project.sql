@@ -68,3 +68,6 @@ INSERT INTO Questions(QuestionText) VALUES ("How organized are you?");
 INSERT INTO Questions(QuestionText) VALUES ("How punctual are you?");
 INSERT INTO Questions(QuestionText) VALUES ("What personality best describes you?");
 INSERT INTO Questions(QuestionText) VALUES ("Will you be on-campus in spring?");
+
+-- Create new question answers
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 1, "Tandon");
