@@ -38,7 +38,13 @@
             </div>
         </div>
     </header>
-
+    <?php
+        include('processing/config.php');
+        /*First find the matches*/
+        $query = $connection->prepare("SELECT AnswerOptionId, COUNT(*) FROM UserAnswers GROUP BY AnswerOptionId ORDER BY COUNT(*) INC");
+		$query->execute();
+        /*Then insert into the matches table*/
+    ?>
     <body>
         <div class="findSection">
             <h1 class="title">Find New People</h1>
