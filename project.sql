@@ -90,8 +90,8 @@ INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Neutral -- M
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Somewhat positively -- I've enjoyed having more alone time to spend by myself and with family.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "I was self-quarantining since before COVID was even a thing.");
 /* Answer Options for question #2 ("Are you more emotional or logical?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Brand / trends");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Looks");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Brand / trends.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Looks.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Whatever's in the store the same day I go.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Practicality / price.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Comfort.");
@@ -104,7 +104,7 @@ INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Game.");
 /* Answer Options for question #4 ("What do you like to talk about?")*/
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "I like staying up-to-date on my favorite shows.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Stocks or cool new startups.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Nothing in particular, my interests are vast and are know to vary.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Nothing in particular, my interests are vast and are known to vary.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Artificial intelligence or other emerging technologies.");
 INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "PS5 vs. XBOX X.");
 /* Answer Options for question #5 ("How organized are you?")*/ 
