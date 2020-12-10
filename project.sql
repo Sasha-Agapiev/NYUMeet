@@ -60,14 +60,93 @@ INSERT INTO Users(Username, Password, FirstName, LastName) VALUES ("ephil012", "
 INSERT INTO Users(Username, Password, FirstName, LastName) VALUES ("sasha68", "secretpassword", "Sasha", "Agapiev");
 
 -- Create new questions
-INSERT INTO Questions(QuestionText) VALUES ("What is your NYU school?");
-INSERT INTO Questions(QuestionText) VALUES ("Are you an introvert or an extrovert?");
-INSERT INTO Questions(QuestionText) VALUES ("Are you more emotional or logical?");
-INSERT INTO Questions(QuestionText) VALUES ("What activity do you prefer?");
-INSERT INTO Questions(QuestionText) VALUES ("Which topic do you like to talk about?");
-INSERT INTO Questions(QuestionText) VALUES ("How organized are you?");
-INSERT INTO Questions(QuestionText) VALUES ("How punctual are you?");
-INSERT INTO Questions(QuestionText) VALUES ("What personality best describes you?");
-INSERT INTO Questions(QuestionText) VALUES ("Will you be on-campus in spring?");
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (0, "What is your NYU school?");
+INSERT INTO Questions(QuestionId ,QuestionText) VALUES (1, "How have COVID-19 and remote learning impacted your social life?"); /*"Are you an introvert or an extrovert?"*/
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (2, "When you're buying clothes, what do you prioritize?"); /*Are you more emotional or logical?"*/
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (3, "If all your school and career work got put on hold for a day, what would you do?"); /*What activity do you prefer?*/
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (4, "Which current trend or topic are you most interested in?"); /* What do you like to talk about? */ 
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (5, "How organized are you?");
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (6, "How punctual are you?");
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (7, "What genre of music is your go-to?"); /* What personality best describes you?*/
+INSERT INTO Questions(QuestionId, QuestionText) VALUES (8, "Will you be on-campus in spring?");
 -- Create possible answers for each question and insert them to AnswerOptions table
-/* INSERT INTO AnswerOptions() */
+/* Answer Options for question #0 ("What is your NYU school?") */
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "CAS");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Stern");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Gallatin");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Tisch");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "SPS");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Liberal Studies");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Tandon");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Law");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Silver");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Steinhardt");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "NYUAD");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "NYUShanghai");
+/* Answer Options for question #1 ("Are you more of an introvert or an extrovert?") */
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Very negatively -- I hate being alone and miss hanging out with my friends and going out on weekends.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Somewhat negatively -- I'm fine but I still miss normal life and feel disconnected from some friends.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Neutral -- My social life hasn't been impacted.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Somewhat positively -- I've enjoyed having more alone time to spend by myself and with family.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "I was self-quarantining since before COVID was even a thing.");
+/* Answer Options for question #2 ("Are you more emotional or logical?")*/
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Brand / trends");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Looks");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Whatever's in the store the same day I go.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Practicality / price.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Comfort.");
+/* Answer Options for question #3 ("What activity do you prefer?")*/
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Invite people over for a barbecue or kickback.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Try to plan a day-trip with some friends or classmates.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Chill and see what I feel like doing.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Spend some time working on that independent project I've put off to the side.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Game.");
+/* Answer Options for question #4 ("What do you like to talk about?")*/
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "I like staying up-to-date on my favorite shows.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Stocks or cool new startups.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Nothing in particular, my interests are vast and are know to vary.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Artificial intelligence or other emerging technologies.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "PS5 vs. XBOX X.");
+/* Answer Options for question #5 ("How organized are you?")*/ 
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I feel like my life is a mess and yet things keep working out.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I feel like I'm pretty organized, and yet things keep not working out.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I'm organized enough to get by.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I try to start working on assignments and projects the first day they're assigned.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, " '14 incomplete assignments.' ");
+/* Answer Options for question #6 ("How punctual are you?")*/
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "Fashionably late.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "I'm on time when it counts.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "I strive to live on my own time.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "I'm usually chatting with the teacher over Zoom 5 minutes before class starts.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "Due tomorrow, do tomorrow.");
+/* Answer Options for question #7 ("What genre of music is your go-to?")*/
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Pop.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Alt Rock.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Rap.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Classical.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Country.");
+/* Answer Options for question #8 ("Will you be on-campus in the Spring?")*/
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "Yes!");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "I hope, but not sure yet.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "No, unfortunately.");
+INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "Hell, no.");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
