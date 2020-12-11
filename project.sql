@@ -135,5 +135,7 @@ INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (
 /* Find all QuestionId and QuestionText and group by QuestionId to prevent repeats */
 SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId;
 
-/* How to find all the questions + answer options for edit page */
-SELECT Questions.QuestionId, Questions.QuestionText, AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM Questions INNER JOIN AnswerOptions ON Questions.QuestionId = AnswerOptions.QuestionId;
+/* How to find all the answer options for questionID*/
+SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = :QuestionId;
+/* How to find all the answer options for questionID 0*/
+SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = 0;

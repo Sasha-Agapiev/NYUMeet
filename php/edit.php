@@ -47,22 +47,13 @@
                     <h4 class="text"><?php echo $row['QuestionText']; ?></h4>
                     <select name="q1" id="q1">
                         <option disabled selected value/>
-                        <option value="CAS">CAS</option>
-                        <option value="Gallatin">Gallatin</option>
-                        <option value="LS">Liberal Studies</option>
-                        <option value="Nursing">Nursing</option>
-                        <option value="PS">Professional Studies</option>
-                        <option value="Silver">Silver</option>
-                        <option value="Steinhardt">Steinhardt</option>
-                        <option value="Stern">Stern</option>
-                        <option value="Tandon">Tandon</option>
-                        <option value="Tisch">Tisch</option>
                         <?php
-                            $options = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
+                            $options = $connection->prepare("SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = :QuestionId");
+                            $options->bindParam("QuestionId", $row['QuestionId'], PDO::PARAM_STR);
                             $options->execute();
                             while ($optionRow = $options->fetch(PDO::FETCH_ASSOC)) {?>
-                                <option value=<?php echo $optionRow["AnswerOptionText"] ?> ><?php echo $optionRow["AnswerOptionText"] ?></option>
-
+                                <option value=1> <?php echo $optionRow["AnswerOptionText"] ?> </option>
+                            <?php } ?>
                     </select>
                 <?php } ?>
     
