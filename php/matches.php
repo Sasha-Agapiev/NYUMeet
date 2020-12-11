@@ -55,8 +55,8 @@
                 $stmt1->bind_param("thisUserId", $thisUserId);
                 $stmt1->execute();
                 $result1 = $stmt1->get_result();
-                if($result-> num_rows > 0){
-                    while($row = $result->fetch_assoc()){
+                if($result1->num_rows() > 0){
+                    while($row = $result1->fetch_assoc()){
                         $matchId = $row["userId1"];
                         $sql2 = "SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM users WHERE UserId = :matchId ";
                         $stmt2 = $connection->prepare($sql2);
