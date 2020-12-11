@@ -39,8 +39,7 @@
                 $addAnswerResult = $addAnswerQuery->execute();
             }
         }
-
-        if (!$bioResult) {
+        if (!$bioResult or !$addAnswerResult or !$answerExistsResult) {
             echo '<p class="error">Please try again later</p>';
         }
     }

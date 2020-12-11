@@ -54,7 +54,7 @@
                 /* Generate question entries */
                 foreach($questionResults as $questionRow) {?>
                     <h4 class="text"><?php echo $questionRow['QuestionText']; ?></h4>
-                    <select name=<?php echo $questionRow["QuestionId"]?> id=<?php echo $questionRow["QuestionId"]?>>
+                    <select name=<?php echo $questionRow["QuestionId"]?> id=<?php echo $questionRow["QuestionId"]?> required>
                         <option disabled selected value/>
                         <?php
                             /* Generate answer entries */
@@ -68,16 +68,16 @@
                 <?php } ?>
     
             <h4 class="text">Give a quick bio about yourself</h4>
-            <textarea maxlength=512 cols=100 rows=8 id="bio" name="bio" placeholder="Tell others about yourself! Some things to talk about are your interests, what you want in a friendship, your favorite tv show, or your favorite activity!"></textarea>
+            <textarea maxlength=512 cols=100 rows=8 id="bio" name="bio" placeholder="Tell others about yourself! Some things to talk about are your interests, what you want in a friendship, your favorite tv show, or your favorite activity!" required></textarea>
 
             <h4 class="text">Snapchat Username</h4>
-            <input type="text" placeholder="Enter Snapchat Username" name="snap" >
+            <input type="text" placeholder="Enter Snapchat Username" name="snap" required>
 
             <h4 class="text">Zoom Username</h4>
-            <input type="text" placeholder="Enter Zoom Username" name="zoom" >
+            <input type="text" placeholder="Enter Zoom Username" name="zoom" required>
 
             <h4 class="text">Instagram Username</h4>
-            <input type="text" placeholder="Enter Instagram Username" name="instagram" >
+            <input type="text" placeholder="Enter Instagram Username" name="instagram" required>
 
             <button type="submit" name="edit" value="edit" class="buttonSubmit">Submit</button>
             <?php include('processing/editProcessing.php')?>
