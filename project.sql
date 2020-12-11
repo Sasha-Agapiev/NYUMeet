@@ -149,3 +149,5 @@ INSERT INTO UserAnswers(UserId, QuestionId, AnswerOptionId) VALUES (:UserId, :Qu
 
 /* Update question answers for user */ 
 UPDATE UserAnswers SET AnswerOptionId = :AnswerOptionId WHERE UserId = :UserId AND QuestionId = :QuestionId
+
+/* Get people to match with */

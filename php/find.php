@@ -1,3 +1,11 @@
+<?php
+    include('processing/config.php');
+    session_start();
+    if(!isset($_SESSION['UserId'])){
+        header('Location: signin.php');
+        exit;
+    }
+?>
 <html>
     <head>
         <!-- Page Info -->
@@ -38,28 +46,50 @@
             </div>
         </div>
     </header>
-    <?php
-        include('processing/config.php');
-        /*First find the matches*/
-        $query = $connection->prepare("SELECT AnswerOptionId, COUNT(*) FROM UserAnswers GROUP BY AnswerOptionId ORDER BY COUNT(*) INC");
-	$query->execute();
-        /*Then insert into the matches table*/
-    ?>
     <body>
         <div class="findSection">
             <h1 class="title">Find New People</h1>
             <div class="peopleSection">
-                <div class="personContainer">
-                    <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
-                    <div class="personInfoContainer">
-                        <div class="titleContainer">
-                            <h2 class="itemTitle">Eric</h2>
-                            <button class="matchButton">Match</button>
+                <?php
+                    if (isset($_GET['pageno'])) {
+                        $pageno = $_GET['pageno'];
+                    } else {
+                        $pageno = 1;
+                    }
+                    $recordLimit = 10;
+                    $offset = ($pageno-1) * $recordLimit;
+
+                    $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
+                    $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
+                    $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
+                    $pageResult = $pageQuery->execute();
+
+                    while ($findRow = $pageQuery->fetch(PDO::FETCH_ASSOC)){
+                        echo 'hi';
+                        ?>
+                        <div class="personContainer">
+                            <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
+                            <div class="personInfoContainer">
+                                <div class="titleContainer">
+                                    <h2 class="itemTitle"><?php findRow['FirstName'] ?></h2>
+                                    <button class="matchButton">Match</button>
+                                </div>
+                                <p class="personBio"><?php findRow['Bio'] ?></p>
+                            </div>
                         </div>
-                        <p class="personBio">About me: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, augue et vehicula facilisis, elit nunc molestie nulla, a convallis mauris mauris sed quam. Etiam vulputate eros eu sapien accumsan, et dignissim magna venenatis. Praesent purus nisi, laoreet id lorem.</p>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
+        <ul>
+            <li><a href="?pageno=1">First</a></li>
+            <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+            </li>
+            <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+            </li>
+            <li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+        </ul>
     </body>
 </html>
