@@ -1,4 +1,11 @@
-<?php include('processing/config.php') ?>
+<?php 
+    include('processing/config.php');
+    session_start();
+    if(!isset($_SESSION['UserId'])){
+        header('Location: signin.php');
+        exit;
+    }
+ ?>
 <html>
     <head>
         <!-- Page Info -->
@@ -41,13 +48,13 @@
         <div class="formSection">
             <?php
                 /* SQL Query */
-                $query = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
+                $q = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
                 $query->execute();
                 
                 /* Generate question entries */
                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {?>
                     <h4 class="text"><?php echo $row['QuestionText']; ?></h4>
-                    <select name=<?php echo $row["QuestionId"]?> id=<?php echo $row["QuestionId"]?>>
+                    <select name=<?php echo $row["QuestionId"]?> id=<?php echo $row["QuestionId"]?> required>
                         <option disabled selected value/>
                         <?php
                             /* Generate answer entries */
@@ -55,7 +62,7 @@
                             $options->bindParam("QuestionId", $row['QuestionId'], PDO::PARAM_STR);
                             $options->execute();
                             while ($optionRow = $options->fetch(PDO::FETCH_ASSOC)) {?>
-                                <option value=<?php echo $optionRow["AnswerOptionId"]?> > <?php echo $optionRow["AnswerOptionText"] ?> </option>
+                                <option value=<?php echo $optionRow["AnswerOptionId"]?>> <?php echo $optionRow["AnswerOptionText"] ?> </option>
                             <?php } ?>
                     </select>
                 <?php } ?>
