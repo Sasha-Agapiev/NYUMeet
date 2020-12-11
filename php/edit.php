@@ -40,19 +40,22 @@
     <body>
         <div class="formSection">
             <?php
+                /* SQL Query */
                 $query = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
-
                 $query->execute();
+                
+                /* Generate question entries */
                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {?>
                     <h4 class="text"><?php echo $row['QuestionText']; ?></h4>
-                    <select name="q1" id="q1">
+                    <select name=<?php echo $row["QuestionId"]?> id=<?php echo $row["QuestionId"]?>>
                         <option disabled selected value/>
                         <?php
+                            /* Generate answer entries */
                             $options = $connection->prepare("SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = :QuestionId");
                             $options->bindParam("QuestionId", $row['QuestionId'], PDO::PARAM_STR);
                             $options->execute();
                             while ($optionRow = $options->fetch(PDO::FETCH_ASSOC)) {?>
-                                <option value=1> <?php echo $optionRow["AnswerOptionText"] ?> </option>
+                                <option value=<?php echo $optionRow["AnswerOptionId"]?> > <?php echo $optionRow["AnswerOptionText"] ?> </option>
                             <?php } ?>
                     </select>
                 <?php } ?>
