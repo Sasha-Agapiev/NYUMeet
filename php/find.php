@@ -56,18 +56,20 @@
                     } else {
                         $pageno = 1;
                     }
-
-                    $totalQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
-                    $pageResult = $pageQuery->execute();
-                    $total = 
+                    
                     $recordLimit = 10;
                     $offset = ($pageno-1) * $recordLimit;
+
+                    $totalQuery = $connection->prepare("SELECT COUNT(*) FROM Users");
+                    $totalResult = $totalQuery->execute();
+                    $total = ceil($totalResult / $recordLimit);
+
+                    echo $total;
 
                     $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
                     $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
                     $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
                     $pageResult = $pageQuery->execute();
-
                     while ($findRow = $pageQuery->fetch(PDO::FETCH_ASSOC)){
                         ?>
                         <div class="personContainer">
@@ -99,10 +101,10 @@
                     <?php } ?>
                 </div>
                 <ul style="list-style-type:none;">
-                    <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                    <li style="<?php if($pageno <= 1){ echo 'display: none'; } ?>">
                         <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
                     </li>
-                    <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                    <li style="<?php if($pageno >= $total_pages){ echo 'display: none'; } ?>">
                         <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
                     </li>
                 </ul>
