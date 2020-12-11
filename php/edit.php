@@ -45,21 +45,21 @@
     </header>
 
     <body>
-        <div class="formSection">
+        <form method="post" action="edit.php" name="editForm" class="formSection">
             <?php
-                /* SQL Query */
-                $q = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
-                $query->execute();
-                
+                /* SQL query */
+                $questionQuery = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
+                $questionQuery->execute();
+                $questionResults = $questionQuery->fetchAll(PDO::FETCH_ASSOC);
                 /* Generate question entries */
-                while ($row = $query->fetch(PDO::FETCH_ASSOC)) {?>
-                    <h4 class="text"><?php echo $row['QuestionText']; ?></h4>
-                    <select name=<?php echo $row["QuestionId"]?> id=<?php echo $row["QuestionId"]?> required>
+                foreach($questionResults as $questionRow) {?>
+                    <h4 class="text"><?php echo $questionRow['QuestionText']; ?></h4>
+                    <select name=<?php echo $questionRow["QuestionId"]?> id=<?php echo $questionRow["QuestionId"]?>>
                         <option disabled selected value/>
                         <?php
                             /* Generate answer entries */
                             $options = $connection->prepare("SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = :QuestionId");
-                            $options->bindParam("QuestionId", $row['QuestionId'], PDO::PARAM_STR);
+                            $options->bindParam("QuestionId", $questionRow['QuestionId'], PDO::PARAM_STR);
                             $options->execute();
                             while ($optionRow = $options->fetch(PDO::FETCH_ASSOC)) {?>
                                 <option value=<?php echo $optionRow["AnswerOptionId"]?>> <?php echo $optionRow["AnswerOptionText"] ?> </option>
@@ -71,15 +71,16 @@
             <textarea maxlength=512 cols=100 rows=8 id="bio" name="bio" placeholder="Tell others about yourself! Some things to talk about are your interests, what you want in a friendship, your favorite tv show, or your favorite activity!"></textarea>
 
             <h4 class="text">Snapchat Username</h4>
-            <input type="text" placeholder="Enter Snapchat Username" name="snap" required>
+            <input type="text" placeholder="Enter Snapchat Username" name="snap" >
 
             <h4 class="text">Zoom Username</h4>
-            <input type="text" placeholder="Enter Zoom Username" name="zoom" required>
+            <input type="text" placeholder="Enter Zoom Username" name="zoom" >
 
             <h4 class="text">Instagram Username</h4>
-            <input type="text" placeholder="Enter Instagram Username" name="instagram" required>
+            <input type="text" placeholder="Enter Instagram Username" name="instagram" >
 
-            <button class="buttonSubmit">Submit</button>
-        </div>
+            <button type="submit" name="edit" value="edit" class="buttonSubmit">Submit</button>
+            <?php include('processing/editProcessing.php')?>
+        </form>
     </body>
 </html>

@@ -141,5 +141,10 @@ SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerO
 /* How to find all the answer options for questionID 0*/
 SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = 0;
 
-/* How to sort by count of questions answered */
-SELECT UserId FROM userAnswers WHERE 
+/* Get if user already answered question */
+SELECT * FROM UserAnswers WHERE UserId=:UserId AND QuestionId=:QuestionId;
+
+/* Add new question answer for user */
+INSERT INTO UserAnswers(UserId, QuestionId, AnswerOptionId) VALUES (:UserId, :QuestionId, :AnswerOptionId)
+
+UPDATE UserAnswers SET AnswerOptionId = :AnswerOptionId WHERE UserId = :UserId AND QuestionId = :QuestionId
