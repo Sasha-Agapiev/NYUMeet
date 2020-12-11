@@ -56,40 +56,57 @@
                     } else {
                         $pageno = 1;
                     }
+
+                    $totalQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
+                    $pageResult = $pageQuery->execute();
+                    $total = 
                     $recordLimit = 10;
                     $offset = ($pageno-1) * $recordLimit;
 
-                    $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
+                    $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
                     $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
                     $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
                     $pageResult = $pageQuery->execute();
 
                     while ($findRow = $pageQuery->fetch(PDO::FETCH_ASSOC)){
-                        echo 'hi';
                         ?>
                         <div class="personContainer">
                             <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
                             <div class="personInfoContainer">
                                 <div class="titleContainer">
-                                    <h2 class="itemTitle"><?php findRow['FirstName'] ?></h2>
+                                    <h2 class="itemTitle"><?php echo $findRow['FirstName']?> <?php echo $findRow['LastName'] ?></h2>
                                     <button class="matchButton">Match</button>
                                 </div>
-                                <p class="personBio"><?php findRow['Bio'] ?></p>
+                                <p class="personBio"><?php echo $findRow['Bio']?></p>
+                                <ul style="list-style-type:none;">
+                                    <?php
+                                        $quizQuery = $connection->prepare(
+                                            "SELECT Questions.QuestionText, AnswerOptions.AnswerOptionText FROM Users 
+                                                INNER JOIN UserAnswers ON Users.UserId = UserAnswers.UserID
+                                                INNER JOIN Questions ON UserAnswers.QuestionId = Questions.QuestionId
+                                                INNER JOIN AnswerOptions ON UserAnswers.AnswerOptionId = AnswerOptions.AnswerOptionId AND UserAnswers.QuestionId = AnswerOptions.QuestionId
+                                                WHERE Users.UserId = :UserId
+                                            ");
+                                        $quizQuery->bindParam("UserId", $findRow['UserId'], PDO::PARAM_STR);
+                                        $quizResult = $quizQuery->execute();
+                                        while ($quizRow = $quizQuery->fetch(PDO::FETCH_ASSOC)){
+                                        ?>
+                                            <li><b><?php echo $quizRow['QuestionText']?>:</b> <?php echo $quizRow['AnswerOptionText']?></li>
+                                        <?php } ?>
+                                </ul>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
+                <ul style="list-style-type:none;">
+                    <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                        <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+                    </li>
+                    <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                        <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <ul>
-            <li><a href="?pageno=1">First</a></li>
-            <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
-                <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
-            </li>
-            <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
-                <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
-            </li>
-            <li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
-        </ul>
     </body>
 </html>

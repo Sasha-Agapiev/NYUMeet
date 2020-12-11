@@ -150,4 +150,8 @@ INSERT INTO UserAnswers(UserId, QuestionId, AnswerOptionId) VALUES (:UserId, :Qu
 /* Update question answers for user */ 
 UPDATE UserAnswers SET AnswerOptionId = :AnswerOptionId WHERE UserId = :UserId AND QuestionId = :QuestionId
 
-/* Get people to match with */
+/* Get info about people */
+SELECT Questions.QuestionText, AnswerOptions.AnswerOptionText FROM Users 
+    INNER JOIN UserAnswers ON Users.UserId = UserAnswers.UserID
+    INNER JOIN Questions ON UserAnswers.QuestionId = Questions.QuestionId
+    INNER JOIN AnswerOptions ON UserAnswers.AnswerOptionId = AnswerOptions.AnswerOptionId AND UserAnswers.QuestionId = AnswerOptions.QuestionId;

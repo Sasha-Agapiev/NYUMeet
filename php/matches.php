@@ -67,10 +67,10 @@
                         echo "<tr><td>".$row2["FirstName"]."</td><td>".$row2["LastName"]."</td><td>".$row2["Username"]."</td><td>".$row2["Bio"]."</td><td>".$row2["Instagram"]."</td><td>".$row2["
                         Snapchat"]."</td><td>";
                     }
-                    echo "</table>"
+                    echo "</table>";
                 }
                 else{
-                    echo "No matches at this time :("
+                    echo "No matches at this time :(";
                 }
             ?>
             <div class="peopleSection">
