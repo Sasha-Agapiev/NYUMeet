@@ -147,4 +147,5 @@ SELECT * FROM UserAnswers WHERE UserId=:UserId AND QuestionId=:QuestionId;
 /* Add new question answer for user */
 INSERT INTO UserAnswers(UserId, QuestionId, AnswerOptionId) VALUES (:UserId, :QuestionId, :AnswerOptionId)
 
+/* Update question answers for user */ 
 UPDATE UserAnswers SET AnswerOptionId = :AnswerOptionId WHERE UserId = :UserId AND QuestionId = :QuestionId
