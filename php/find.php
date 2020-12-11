@@ -64,8 +64,6 @@
                     $totalResult = $totalQuery->execute();
                     $total = ceil($totalResult / $recordLimit);
 
-                    echo $total;
-
                     $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
                     $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
                     $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
