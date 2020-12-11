@@ -16,6 +16,7 @@ CREATE TABLE Users (
     Password varchar(255) NOT NULL,
     FirstName varchar(255) NOT NULL,
     LastName varchar(255) NOT NULL,
+    Bio varchar (512),
     Snapchat varchar(255),
     Zoom varchar(255),
     Instagram varchar(255),
@@ -24,7 +25,7 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Questions (
-    QuestionId int NOT NULL AUTO_INCREMENT,
+    QuestionId int NOT NULL,
     QuestionText varchar(255) NOT NULL,
     PRIMARY KEY(QuestionId)
 );
@@ -71,82 +72,68 @@ INSERT INTO Questions(QuestionId, QuestionText) VALUES (7, "What genre of music 
 INSERT INTO Questions(QuestionId, QuestionText) VALUES (8, "Will you be on-campus in spring?");
 -- Create possible answers for each question and insert them to AnswerOptions table
 /* Answer Options for question #0 ("What is your NYU school?") */
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "CAS");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Stern");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Gallatin");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Tisch");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "SPS");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Liberal Studies");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Tandon");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Law");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Silver");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "Steinhardt");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "NYUAD");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (0, "NYUShanghai");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 0, "CAS");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 0, "Stern");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3. 0, "Gallatin");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 0, "Tisch");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 0, "SPS");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (6, 0, "Liberal Studies");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (7, 0, "Tandon");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (8, 0, "Law");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (9, 0, "Silver");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (10, 0, "Steinhardt");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (11, 0, "NYU AD");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (12, 0, "NYU Shanghai");
 /* Answer Options for question #1 ("Are you more of an introvert or an extrovert?") */
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Very negatively -- I hate being alone and miss hanging out with my friends and going out on weekends.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Somewhat negatively -- I'm fine but I still miss normal life and feel disconnected from some friends.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Neutral -- My social life hasn't been impacted.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "Somewhat positively -- I've enjoyed having more alone time to spend by myself and with family.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (1, "I was self-quarantining since before COVID was even a thing.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 1, "Very negatively -- I hate being alone and miss hanging out with my friends and going out on weekends.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 1, "Somewhat negatively -- I'm fine but I still miss normal life and feel disconnected from some friends.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 1, "Neutral -- My social life hasn't been impacted.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 1, "Somewhat positively -- I've enjoyed having more alone time to spend by myself and with family.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 1, "I was self-quarantining since before COVID was even a thing.");
 /* Answer Options for question #2 ("Are you more emotional or logical?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Brand / trends.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Looks.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Whatever's in the store the same day I go.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Practicality / price.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (2, "Comfort.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 2, "Brand / trends.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 2, "Looks.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 2, "Whatever's in the store the same day I go.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 2, "Practicality / price.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 2, "Comfort.");
 /* Answer Options for question #3 ("What activity do you prefer?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Invite people over for a barbecue or kickback.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Try to plan a day-trip with some friends or classmates.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Chill and see what I feel like doing.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Spend some time working on that independent project I've put off to the side.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (3, "Game.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 3, "Invite people over for a barbecue or kickback.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 3, "Try to plan a day-trip with some friends or classmates.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 3, "Chill and see what I feel like doing.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 3, "Spend some time working on that independent project I've put off to the side.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 3, "Game.");
 /* Answer Options for question #4 ("What do you like to talk about?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "I like staying up-to-date on my favorite shows.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Stocks or cool new startups.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Nothing in particular, my interests are vast and are known to vary.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "Artificial intelligence or other emerging technologies.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (4, "PS5 vs. XBOX X.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 4, "I like staying up-to-date on my favorite shows.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 4, "Stocks or cool new startups.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 4, "Nothing in particular, my interests are vast and are known to vary.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 4, "Artificial intelligence or other emerging technologies.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 4, "PS5 vs. XBOX X.");
 /* Answer Options for question #5 ("How organized are you?")*/ 
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I feel like my life is a mess and yet things keep working out.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I feel like I'm pretty organized, and yet things keep not working out.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I'm organized enough to get by.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, "I try to start working on assignments and projects the first day they're assigned.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (5, " '14 incomplete assignments.' ");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 5, "I feel like my life is a mess and yet things keep working out.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 5, "I feel like I'm pretty organized, and yet things keep not working out.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 5, "I'm organized enough to get by.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 5, "I try to start working on assignments and projects the first day they're assigned.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 5, " '14 incomplete assignments.' ");
 /* Answer Options for question #6 ("How punctual are you?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "Fashionably late.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "I'm on time when it counts.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "I strive to live on my own time.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "I'm usually chatting with the teacher over Zoom 5 minutes before class starts.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (6, "Due tomorrow, do tomorrow.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 6, "Fashionably late.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 6, "I'm on time when it counts.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 6, "I strive to live on my own time.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 6, "I'm usually chatting with the teacher over Zoom 5 minutes before class starts.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 6, "Due tomorrow, do tomorrow.");
 /* Answer Options for question #7 ("What genre of music is your go-to?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Pop.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Alt Rock.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Rap.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Classical.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (7, "Country.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 7, "Pop.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 7, "Alt Rock.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 7, "Rap.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 7, "Classical.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (5, 7, "Country.");
 /* Answer Options for question #8 ("Will you be on-campus in the Spring?")*/
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "Yes!");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "I hope, but not sure yet.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "No, unfortunately.");
-INSERT INTO AnswerOptions(QuestionId, AnswerOptionText) VALUES (8, "Hell, no.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 8, "Yes!");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 8, "I hope, but not sure yet.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (3, 8, "No, unfortunately.");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (4, 8, "Hell, no.");
 
+/* Find all QuestionId and QuestionText and group by QuestionId to prevent repeats */
+SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* How to find all the questions + answer options for edit page */
+SELECT Questions.QuestionId, Questions.QuestionText, AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM Questions INNER JOIN AnswerOptions ON Questions.QuestionId = AnswerOptions.QuestionId;
