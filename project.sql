@@ -142,4 +142,8 @@ SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerO
 SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = 0;
 
 /* How to sort by count of questions answered */
-SELECT UserId FROM userAnswers WHERE 
+/* First Approach -- This should give the top 10 in sorted order*/ 
+SELECT TOP 10 FROM userAnswers GROUP BY UserId ORDER BY COUNT((QuestionId * AnswerOptionId));
+/* Second Approach -- This should just give us 10 matches in whatever order they come*/
+SELECT UserId FROM userAnswers GROUP BY UserId ORDER BY COUNT((QuestionId * AnswerOptionId)) LIMIT 10;
+
