@@ -64,9 +64,9 @@
         </div>
         <footer>
             <div class="footerLinks">
-                <a href="about.php">About</a>
-                <a href="privacy.php">Privacy</a>
-                <a href="tos.php">Terms of Use</a>
+                <a href="php/about.php">About</a>
+                <a href="php/privacy.php">Privacy</a>
+                <a href="php/tos.php">Terms of Use</a>
             </div>
         </footer>
     </body>
