@@ -84,6 +84,7 @@ INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (
 INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (10, 0, "Steinhardt");
 INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (11, 0, "NYU AD");
 INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (12, 0, "NYU Shanghai");
+INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (13, 0, "Not an NYU student");
 /* Answer Options for question #1 ("Are you more of an introvert or an extrovert?") */
 INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (1, 1, "Very negatively -- I hate being alone and miss hanging out with my friends and going out on weekends.");
 INSERT INTO AnswerOptions(AnswerOptionId, QuestionId, AnswerOptionText) VALUES (2, 1, "Somewhat negatively -- I'm fine but I still miss normal life and feel disconnected from some friends.");
@@ -139,3 +140,6 @@ SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Ques
 SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = :QuestionId;
 /* How to find all the answer options for questionID 0*/
 SELECT AnswerOptions.AnswerOptionId, AnswerOptions.AnswerOptionText FROM AnswerOptions WHERE AnswerOptions.QuestionId = 0;
+
+/* How to sort by count of questions answered */
+SELECT UserId FROM userAnswers WHERE 
