@@ -1,4 +1,5 @@
 <?php
+    /* Setup db and check if user signed in */
     include('processing/config.php');
     session_start();
     if(!isset($_SESSION['UserId'])){
@@ -52,13 +53,16 @@
             <h1 class="title">Your Matches</h1>
             <div class="peopleSection">
                 <?php
+                    /* Query to get matches */
                     $matchesQuery = $connection->prepare("SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM Matches INNER JOIN Users ON Matches.UserId2 = Users.UserId WHERE Matches.UserId1 = :UserId");
                     $matchesQuery->bindParam("UserId", $_SESSION['UserId'], PDO::PARAM_INT);
                     $matchesQuery->execute();
                     $matchesResult = $matchesQuery->fetchAll(PDO::FETCH_ASSOC);
+                    /* If we have no matches */
                     if ($matchesQuery->rowCount() == 0) {
                         echo '<h2 class="error">No matches yet</h2>';
                     }
+                    /* Display all the matches */
                     foreach($matchesResult as $matchesRow) {
                     ?>
                         <div class="personContainer">

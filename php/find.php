@@ -1,9 +1,22 @@
 <?php
+    /* Setup db and session */
     include('processing/config.php');
     session_start();
+    /* Redirect if not signed in */
     if(!isset($_SESSION['UserId'])){
         header('Location: signin.php');
         exit;
+    } else {
+        /* See if user finished setting up account. This query just checks the finishedSetup bool in the db*/
+        $finishedQuery = $connection->prepare("SELECT finishedSetup FROM Users WHERE UserId = :UserId");
+        $finishedQuery->bindParam("UserId", $_SESSION['UserId'], PDO::PARAM_INT);
+        $finishedQuery->execute();
+        /* This just gets the first result, but we will only have one result no matter what anyhow */
+        $finishedResult = $finishedQuery->fetch(PDO::FETCH_ASSOC);
+        if (!$finishedResult['finishedSetup']) {
+            header('Location: edit.php');
+            exit;
+        }
     }
 ?>
 <html>
@@ -51,23 +64,28 @@
             <h1 class="title">Find New People</h1>
             <div class="peopleSection">
                 <?php
+                    /* Get page number */
                     if (isset($_GET['pageno'])) {
                         $pageno = $_GET['pageno'];
                     } else {
                         $pageno = 1;
                     }
                     
+                    /* Info for pagination limits */
                     $recordLimit = 10;
                     $offset = ($pageno-1) * $recordLimit;
 
+                    /* Get total items we have in db */
                     $totalQuery = $connection->prepare("SELECT COUNT(*) FROM Users");
                     $totalResult = $totalQuery->execute();
                     $total = ceil($totalResult / $recordLimit);
 
+                    /* Get users with pagination */
                     $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
                     $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
                     $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
                     $pageResult = $pageQuery->execute();
+                    /* Display users */
                     while ($findRow = $pageQuery->fetch(PDO::FETCH_ASSOC)){
                         ?>
                         <div class="personContainer">
@@ -80,6 +98,7 @@
                                 <p class="personBio"><?php echo $findRow['Bio']?></p>
                                 <ul style="list-style-type:none;">
                                     <?php
+                                        /* Get user answers to quiz */
                                         $quizQuery = $connection->prepare(
                                             "SELECT Questions.QuestionText, AnswerOptions.AnswerOptionText FROM Users 
                                                 INNER JOIN UserAnswers ON Users.UserId = UserAnswers.UserID
@@ -89,6 +108,8 @@
                                             ");
                                         $quizQuery->bindParam("UserId", $findRow['UserId'], PDO::PARAM_STR);
                                         $quizResult = $quizQuery->execute();
+
+                                        /* Display quiz answers */
                                         while ($quizRow = $quizQuery->fetch(PDO::FETCH_ASSOC)){
                                         ?>
                                             <li><b><?php echo $quizRow['QuestionText']?>:</b> <?php echo $quizRow['AnswerOptionText']?></li>
@@ -99,10 +120,10 @@
                     <?php } ?>
                 </div>
                 <ul style="list-style-type:none;">
-                    <li style="<?php if($pageno <= 1){ echo 'display: none'; } ?>">
+                    <li style="<?php if($pageno <= 1){ /* Do not display if page is <= 1 */ echo 'display: none'; } ?>">
                         <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
                     </li>
-                    <li style="<?php if($pageno >= $total_pages){ echo 'display: none'; } ?>">
+                    <li style="<?php if($pageno >= $total_pages){ /* Do not display if page is >= total */  echo 'display: none'; } ?>">
                         <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
                     </li>
                 </ul>

@@ -30,6 +30,7 @@
 		elseif ($query->rowCount() == 0 and count($issues) == 0) {
 			$hashed = password_hash($password, PASSWORD_BCRYPT);
 			
+			/* Insert new user */ 
 			$query = $connection->prepare("INSERT INTO Users(Username, Password, FirstName, LastName, finishedSetup) VALUES (:username,:hashed,:firstName,:lastName, False)");
             $query->bindParam("username", $username, PDO::PARAM_STR);
             $query->bindParam("hashed", $hashed, PDO::PARAM_STR);
@@ -38,6 +39,7 @@
 
             $result = $query->execute();
 			
+			/* Finish up and display error if needed */
 			if ($result) {
 				header('Location: ../index.php');
 				exit;

@@ -1,4 +1,5 @@
 <?php
+    /* Config db */
     define('USER', 'phpadmin');
     define('PASSWORD', 's9H1*L@SNC*2NOkrDgIsMGHgl');
     define('HOST', 'localhost');

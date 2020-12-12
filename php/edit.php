@@ -1,6 +1,11 @@
 <?php 
+    /* Setup db and webpage and etc 
+    TODO: maybe close connection?
+    */
+
     include('processing/config.php');
     session_start();
+    /* Redirect if not signed in */
     if(!isset($_SESSION['UserId'])){
         header('Location: signin.php');
         exit;
@@ -47,7 +52,7 @@
     <body>
         <form method="post" action="edit.php" name="editForm" class="formSection">
             <?php
-                /* SQL query */
+                /* SQL query for getting questions */
                 $questionQuery = $connection->prepare("SELECT Questions.QuestionId, Questions.QuestionText FROM Questions GROUP BY Questions.QuestionId");
                 $questionQuery->execute();
                 $questionResults = $questionQuery->fetchAll(PDO::FETCH_ASSOC);
