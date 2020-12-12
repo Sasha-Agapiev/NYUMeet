@@ -49,6 +49,12 @@
         /* Display errors if needed */
         if (!$userResult or !$addAnswerResult or !$answerExistsResult) {
             echo '<p class="error">Please try again later</p>';
+        } else {
+            /* We got to redirect using js because we already echoed earlier */
+            $redirect = "find.php";
+            if (!@header("Location: ".$redirect))
+                echo "\n<script type=\"text/javascript\">window.location.replace('$redirect');</script>\n";
+            exit;
         }
     }
 ?>
