@@ -89,7 +89,6 @@
                     while ($findRow = $pageQuery->fetch(PDO::FETCH_ASSOC)){
                         ?>
                         <div class="personContainer">
-                            <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
                             <div class="personInfoContainer">
                                 <div class="titleContainer">
                                     <h2 class="itemTitle"><?php echo $findRow['FirstName']?> <?php echo $findRow['LastName'] ?></h2>
