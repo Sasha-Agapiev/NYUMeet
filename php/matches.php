@@ -53,11 +53,35 @@
             <h1 class="title">Your Matches</h1>
             <div class="peopleSection">
                 <?php
+                    /* Get page number */
+                    if (isset($_GET['pageno'])) {
+                        $pageno = $_GET['pageno'];
+                    } else {
+                        $pageno = 1;
+                    }
+                    
+                    /* Info for pagination limits */
+                    $recordLimit = 10;
+                    $offset = ($pageno-1) * $recordLimit;
+
+                    /* Get total items we have in db */
+                    $totalQuery = $connection->prepare("SELECT COUNT(*) FROM Matches INNER JOIN Users ON Matches.UserId2 = Users.UserId WHERE Matches.UserId1 = :UserId");
+                    $totalQuery->bindParam("UserId", $_SESSION['UserId'], PDO::PARAM_INT);
+                    $totalResult = $totalQuery->execute();
+                    $total = ceil($totalResult / $recordLimit);
+
+                    /* Get users with pagination */
+                    $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
+                    $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
+                    $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
+                    $pageResult = $pageQuery->execute();
+
                     /* Query to get matches */
-                    $matchesQuery = $connection->prepare("SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM Matches INNER JOIN Users ON Matches.UserId2 = Users.UserId WHERE Matches.UserId1 = :UserId");
+                    $matchesQuery = $connection->prepare("SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM Matches INNER JOIN Users ON Matches.UserId2 = Users.UserId WHERE Matches.UserId1 = :UserId LIMIT :offset, :recordLimit");
                     $matchesQuery->bindParam("UserId", $_SESSION['UserId'], PDO::PARAM_INT);
                     $matchesQuery->execute();
                     $matchesResult = $matchesQuery->fetchAll(PDO::FETCH_ASSOC);
+                    
                     /* If we have no matches */
                     if ($matchesQuery->rowCount() == 0) {
                         echo '<h2 class="error">No matches yet</h2>';
@@ -80,6 +104,14 @@
                             </div>
                         </div>
                     <?php } ?>
+                <ul style="list-style-type:none;">
+                    <li style="<?php if($pageno <= 1){ /* Do not display if page is <= 1 */ echo 'display: none'; } ?>">
+                        <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+                    </li>
+                    <li style="<?php if($pageno >= $total_pages){ /* Do not display if page is >= total */  echo 'display: none'; } ?>">
+                        <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </body>
