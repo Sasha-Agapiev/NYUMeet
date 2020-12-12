@@ -39,9 +39,10 @@
             $result = $query->execute();
 			
 			if ($result) {
-                echo '<p class="success">Success!</p>';
+				header('Location: ../index.php');
+				exit;
             } else {
-                echo '<p class="error">Please try again later</p>';
+                echo '<p class="error">Error: Please try again later</p>';
             }
         }
     }

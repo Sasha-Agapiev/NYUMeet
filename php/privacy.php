@@ -31,8 +31,8 @@
     </header>
     <body>
     	<u>Privacy</u>
-        <h6>
+        <h3>
 	NYU Meet has been engineered following the latest in SQL and PHP privacy 	    	protection protocols, which means whatever information you enter onto our             	site is protected from known data attacks. Only users whom you have matched 	    	with will be able to access your contact and biography information.   
-	</h6>
+	</h3>
     </body>
 </html>

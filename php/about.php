@@ -31,8 +31,8 @@
     </header>
     <body>
     	<u>About</u>
-        <h6>
+        <h3>
 	NYU Meet is a project launched by two NYU CS undergraduates (Ethan 		           Philpott and Sasha Agapiev) for CS-UY 3806.
-	</h6>
+	</h3>
     </body>
 </html>

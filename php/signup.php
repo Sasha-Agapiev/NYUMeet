@@ -61,4 +61,11 @@
             <button type="submit" name="register" value="register" class="buttonSubmit">Submit</button>
         </form>
     </body>
+    <footer>
+        <div class="footerLinks">
+            <a href="php/about.php">About</a>
+            <a href="php/privacy.php">Privacy</a>
+            <a href="php/tos.php">Terms of Use</a>
+        </div>
+    </footer>
 </html>

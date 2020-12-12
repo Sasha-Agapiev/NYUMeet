@@ -20,6 +20,8 @@
 		} else {
 			if (password_verify($password, $result['Password'])) {
 				$_SESSION['UserId'] = $result['UserId'];
+				header('Location: find.php');
+				exit;
 			} else {
 				echo '<p class="error">Error: Wrong username password combo</p>';
 			}
