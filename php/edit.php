@@ -38,7 +38,7 @@
                     <a href="../index.php"><h3 class="titleBrand">NYUMeet</h3></a>
                 </div>
                 <div class="rightTitleBar">
-                    <h4 class="menuItem activeMenuItem">Sign Out</h4>
+                    <a href="signout.php"><h4 class="menuItem inactiveMenuItem">Sign Out</h4></a>
                 </div>
             </div>
         </div>

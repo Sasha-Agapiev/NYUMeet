@@ -30,7 +30,7 @@
 		elseif ($query->rowCount() == 0 and count($issues) == 0) {
 			$hashed = password_hash($password, PASSWORD_BCRYPT);
 			
-			$query = $connection->prepare("INSERT INTO Users(Username, Password, FirstName, LastName) VALUES (:username,:hashed,:firstName,:lastName)");
+			$query = $connection->prepare("INSERT INTO Users(Username, Password, FirstName, LastName, finishedSetup) VALUES (:username,:hashed,:firstName,:lastName, False)");
             $query->bindParam("username", $username, PDO::PARAM_STR);
             $query->bindParam("hashed", $hashed, PDO::PARAM_STR);
 			$query->bindParam("firstName", $firstName, PDO::PARAM_STR);

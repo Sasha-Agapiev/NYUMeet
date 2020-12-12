@@ -1,4 +1,11 @@
 <html>
+    <?php
+        session_start();
+        if(isset($_SESSION['UserId'])){
+            header('Location: php/find.php');
+            exit;
+        }
+    ?>
     <head>
         <!-- Page Info -->
         <meta charset="utf-8">

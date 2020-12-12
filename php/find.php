@@ -41,7 +41,7 @@
                 </div>
                 <div class="rightTitleBar">
                     <a href="edit.php"><h4 class="menuItem inactiveMenuItem">Profile</h4></a>
-                    <h4 class="menuItem inactiveMenuItem">Sign out</h4>
+                    <a href="signout.php"><h4 class="menuItem inactiveMenuItem">Sign Out</h4></a>
                 </div>
             </div>
         </div>

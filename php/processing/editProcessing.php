@@ -8,7 +8,7 @@
         $userId = $_SESSION['UserId'];
 
         $bioQuery = $connection->prepare(
-            "UPDATE Users SET Bio = :bio, Snapchat = :snap, Zoom = :zoom, Instagram = :instagram WHERE UserId = :userId"
+            "UPDATE Users SET Bio = :bio, Snapchat = :snap, Zoom = :zoom, Instagram = :instagram, finishedSetup = True WHERE UserId = :userId"
         );
         $bioQuery->bindParam("bio", $bio, PDO::PARAM_STR);
         $bioQuery->bindParam("snap", $snap, PDO::PARAM_STR);

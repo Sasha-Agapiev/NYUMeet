@@ -16,6 +16,7 @@ CREATE TABLE Users (
     Password varchar(255) NOT NULL,
     FirstName varchar(255) NOT NULL,
     LastName varchar(255) NOT NULL,
+    finishedSetup Boolean NOT NULL,
     Bio varchar (512),
     Snapchat varchar(255),
     Zoom varchar(255),

@@ -25,7 +25,6 @@
                     <a href="../index.php"><h3 class="titleBrand">NYUMeet</h3></a>
                 </div>
                 <div class="rightTitleBar">
-                    <h4 class="menuItem activeMenuItem">Sign Out</h4>
                 </div>
             </div>
         </div>
