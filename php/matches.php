@@ -54,20 +54,24 @@
                 <?php
                     $matchesQuery = $connection->prepare("SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM Matches INNER JOIN Users ON Matches.UserId2 = Users.UserId WHERE Matches.UserId1 = :UserId");
                     $matchesQuery->bindParam("UserId", $_SESSION['UserId'], PDO::PARAM_INT);
-                    $matchesResult = $matchesQuery->execute();
-                    while ($findRow = $matchesQuery->fetch(PDO::FETCH_ASSOC)){
+                    $matchesQuery->execute();
+                    $matchesResult = $matchesQuery->fetchAll(PDO::FETCH_ASSOC);
+                    if ($matchesQuery->rowCount() == 0) {
+                        echo '<h2 class="error">No matches yet</h2>';
+                    }
+                    foreach($matchesResult as $matchesRow) {
                     ?>
                         <div class="personContainer">
                             <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
                             <div class="personInfoContainer">
                                 <div class="titleContainer">
-                                    <h2 class="itemTitle"><?php echo $findRow['FirstName']?> <?php echo $findRow['LastName'] ?></h2>
+                                    <h2 class="itemTitle"><?php echo $matchesRow['FirstName']?> <?php echo $matchesRow['LastName'] ?></h2>
                                 </div>
-                                <p class="personBio"><?php echo $findRow['Bio']?></p>
+                                <p class="personBio"><?php echo $matchesRow['Bio']?></p>
                                 <h3 class="itemTitle">Contact Info</h3>
-                                <p class="personBio"><?php echo 'Snapchat:', $findRow['Snapchat']?><br>
-                                    <?php echo 'Instagram:', $findRow['Instagram']?><br>
-                                    <?php echo 'Zoom:', $findRow['Zoom']?>
+                                <p class="personBio"><?php echo 'Snapchat:', $matchesRow['Snapchat']?><br>
+                                    <?php echo 'Instagram:', $matchesRow['Instagram']?><br>
+                                    <?php echo 'Zoom:', $matchesRow['Zoom']?>
                                 </p>
                             </div>
                         </div>
