@@ -42,52 +42,49 @@
     <body>
         <div class="findSection">
             <h1 class="title">Your Matches</h1>
-            <?php
+            <div class="peopleSection">
+                <?php
                 include('processing/config.php');
                 session_start();
                 if(!isset($_SESSION['UserId'])){
                     header('Location: signin.php');
                     exit;
                 }
-                $thisUserId = $_SESSION['UserId'];
-                $sql1 = "SELECT UserId1 FROM matches WHERE UserId2 = :thisUserId";
-                $stmt1 = $connection->prepare($sql1);
-                $stmt1->bind_param("thisUserId", $thisUserId);
-                $stmt1->execute();
-                $result1 = $stmt1->get_result();
-                if($result1->num_rows() > 0){
-                    while($row = $result1->fetch_assoc()){
-                        $matchId = $row["userId1"];
-                        $sql2 = "SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM users WHERE UserId = :matchId ";
-                        $stmt2 = $connection->prepare($sql2);
-                        $stmt2->bind_param("matchId", $matchId);
-                        $stmt2->execute();
-                        $result2 = $stmt1->get_results();
-                        $row2 = $result2->fetch_assoc(); 
-                        echo "<tr><td>".$row2["FirstName"]."</td><td>".$row2["LastName"]."</td><td>".$row2["Username"]."</td><td>".$row2["Bio"]."</td><td>".$row2["Instagram"]."</td><td>".$row2["
-                        Snapchat"]."</td><td>";
-                    }
-                    echo "</table>";
-                }
-                else{
-                    echo "No matches at this time :(";
-                }
-            ?>
-            <div class="peopleSection">
-                <div class="personContainer">
-                    <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
-                    <div class="personInfoContainer">
-                        <div class="titleContainer">
-                            <h2 class="itemTitle">Eric</h2>
+                $ourUserId = $_SESSION['UserId'];
+
+                
+                $recordLimit = 10;
+                $offset = ($pageno-1) * $recordLimit;
+                
+                $query1 = $connection->prepare("SELECT FirstName, LastName, Username, Bio, Instagram, Snapchat FROM matches WHERE UserId2 = :thisUserId INNER JOIN Users ON matches.UserId1 = Users.:thisUserId");
+                $query1->bindParam("thisUserId", ourUserId, PDO::PARAM_INT);
+                $result1 = $query1->execute();
+                /* Create the table*/
+                while($findRow = $query1->fetch(PDO::FETCH_ASSOC)){
+                    ?>
+                    <div class="personContainer">
+                        <img class="personImage" src="https://images.unsplash.com/photo-1584799235813-aaf50775698c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=zheka-boychenko-vPkTWyTgk8E-unsplash.jpg"/>
+                        <div class="personInfoContainer">
+                            <div class="titleContainer">
+                                <h2 class="itemTitle"><?php echo $findRow['FirstName']?> <?php echo $findRow['LastName'] ?></h2>
+                            </div>
+                            <p class="personBio"><?php echo $findRow['Bio']?></p>
+                            <h3 class="itemTitle">Contact Info</h3>
+                            <p class="personBio"><?php echo 'Snapchat:', $findRow['Snapchat']?><br>
+                                <?php echo 'Instagram:', $findRow['Instagram']?><br>
+                                <?php echo 'Zoom:', $findRow['Zoom']?>
+                            </p>
                         </div>
-                        <p class="personBio">About me: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, augue et vehicula facilisis, elit nunc molestie nulla, a convallis mauris mauris sed quam. Etiam vulputate eros eu sapien accumsan, et dignissim magna venenatis. Praesent purus nisi, laoreet id lorem.</p>
-                        <h3 class="itemTitle">Contact Info</h3>
-                        <p class="personBio">Snapchat: eee012 <br>
-                            Instagram: eee012 <br>
-                            Zoom: eee012
-                        </p>
                     </div>
-                </div>
+                /* Pagination */
+                <ul style="list-style-type:none;">
+                    <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                        <a href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Prev</a>
+                    </li>
+                    <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                        <a href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Next</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </body>
