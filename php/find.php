@@ -53,7 +53,7 @@
                     <a href="../index.php"><h3 class="titleBrand">NYUMeet</h3></a>
                 </div>
                 <div class="rightTitleBar">
-                    <a href="edit.php"><h4 class="menuItem inactiveMenuItem">Profile</h4></a>
+                    <a href="edit.php"><h4 class="menuItem inactiveMenuItem">Edit Profile</h4></a>
                     <a href="signout.php"><h4 class="menuItem inactiveMenuItem">Sign Out</h4></a>
                 </div>
             </div>

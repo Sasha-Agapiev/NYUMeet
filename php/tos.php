@@ -32,7 +32,7 @@
     <body>
     	<u>Terms of Use</u>
         <h3>
-	        NYU Meet is designed to be a safe, welcoming online community, so please use self-		respect and respect for others when using our service. Repeat offenders will be 		banned from NYU Meet and their profiles will be permanently deactivated! 
+	        NYU Meet is designed to be a safe, welcoming online community, so please use self-		respect and respect for others when using our service. Repeat offenders will be 		banned from NYU Meet and their Edit Profiles will be permanently deactivated! 
 	    </h3>
     </body>
 </html>

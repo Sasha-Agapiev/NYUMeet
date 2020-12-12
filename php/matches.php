@@ -41,7 +41,7 @@
                     <a href="../index.php"><h3 class="titleBrand">NYUMeet</h3></a>
                 </div>
                 <div class="rightTitleBar">
-                    <a href="edit.php"><h4 class="menuItem inactiveMenuItem">Profile</h4></a>
+                    <a href="edit.php"><h4 class="menuItem inactiveMenuItem">Edit Profile</h4></a>
                     <a href="signout.php"><h4 class="menuItem inactiveMenuItem">Sign Out</h4></a>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     $matchesQuery->bindParam("UserId", $_SESSION['UserId'], PDO::PARAM_INT);
                     $matchesQuery->execute();
                     $matchesResult = $matchesQuery->fetchAll(PDO::FETCH_ASSOC);
-                    
+
                     /* If we have no matches */
                     if ($matchesQuery->rowCount() == 0) {
                         echo '<h2 class="error">No matches yet</h2>';
