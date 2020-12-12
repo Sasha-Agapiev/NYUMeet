@@ -81,8 +81,9 @@
                     $total = ceil($totalResult / $recordLimit);
 
                     /* Get users with pagination */
-                    $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users ORDER BY RAND() LIMIT :offset, :recordLimit");
+                    $pageQuery = $connection->prepare("SELECT FirstName, LastName, Bio, UserId FROM Users WHERE UserId != :UserId ORDER BY RAND() LIMIT :offset, :recordLimit");
                     $pageQuery->bindParam("offset", $offset, PDO::PARAM_INT);
+                    $pageQuery->bindParam("UserId", $findRow['UserId'], PDO::PARAM_INT);
                     $pageQuery->bindParam("recordLimit", $recordLimit, PDO::PARAM_INT);
                     $pageResult = $pageQuery->execute();
                     /* Display users */
@@ -92,7 +93,7 @@
                             <div class="personInfoContainer">
                                 <div class="titleContainer">
                                     <h2 class="itemTitle"><?php echo $findRow['FirstName']?> <?php echo $findRow['LastName'] ?></h2>
-                                    <button class="matchButton">Match</button>
+                                    <a href="processing/matchProcessing.php?id=<?php echo $findRow['UserId']?>"><button class="matchButton">Match</button></a>
                                 </div>
                                 <p class="personBio"><?php echo $findRow['Bio']?></p>
                                 <ul style="list-style-type:none;">
